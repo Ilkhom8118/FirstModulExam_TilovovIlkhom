@@ -7,7 +7,7 @@ public interface IMovieService
 {
     Movie AddMovie(MovieBaseDto obj);
     void DeleteMovie(Guid id);
-    Movie UpdateMovie(MovieGetDto obj);
+    void UpdateMovie(MovieGetDto obj);
     List<MovieGetDto> GetAllMovie();
     List<MovieGetDto> GetAllByMoviesDirector(string director);
     MovieGetDto GetTopRatedMovie();
@@ -27,3 +27,5 @@ public interface IMovieService
 // GetTotalBoxOfficeEarningsByDirector : Direktor tomonidan jami kassa daromadini oling
 // GetMoviesSortedByRating : Reyting bo'yicha saralangan filmlarni oling
 // GetRecentMovies : Oxirgi filmlarni oling
+
+//GetTotalBoxOfficeEarningsByDirector

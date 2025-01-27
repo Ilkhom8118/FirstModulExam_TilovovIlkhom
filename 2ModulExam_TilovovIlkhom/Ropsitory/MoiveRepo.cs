@@ -56,7 +56,7 @@ public class MoiveRepo : IMovieRepo
                 return movie;
             }
         }
-        return null;
+        throw new Exception("Not Find!");
     }
 
     public void UpdateMovie(Movie obj)

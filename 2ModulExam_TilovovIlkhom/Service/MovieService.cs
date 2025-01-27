@@ -120,30 +120,65 @@ public class MovieService : IMovieService
         }
         return list;
     }
-    //
+
 
     public List<MovieGetDto> GetMovieWithinDurationRange(int minMinut, int maxMinut)
     {
-        throw new NotImplementedException();
+        var list = new List<MovieGetDto>();
+        var range = movies.GetAllMovie();
+
+        foreach (var movie in range)
+        {
+            if (movie.DurationMinutes >= minMinut && movie.DurationMinutes <= maxMinut)
+            {
+                var convert = ConvertToEntity(movie);
+                list.Add(convert);
+            }
+        }
+        return list;
     }
 
     public List<MovieGetDto> GetRecentMovies(int years)
     {
-        throw new NotImplementedException();
+        var list = new List<MovieGetDto>();
+        var recent = movies.GetAllMovie();
+        foreach (var movie in recent)
+        {
+            if (movie.ReleaseDate.Year == years)
+            {
+                var convert = ConvertToEntity(movie);
+                list.Add(convert);
+            }
+        }
+        return list;
     }
 
     public MovieGetDto GetTopRatedMovie()
     {
-        throw new NotImplementedException();
+        var mostReted = new MovieGetDto();
+        foreach (var movie in GetAllMovie())
+        {
+            if (movie.Rating > mostReted.Rating)
+            {
+                mostReted = movie;
+            }
+        }
+        return mostReted;
     }
 
     public long GetTotalBoxOfficeEarningsByDirector(string director)
     {
-        throw new NotImplementedException();
+        long totalPrice = 0;
+        var movieByDirector = GetAllByMoviesDirector(director);
+        foreach (var price in movieByDirector)
+        {
+            totalPrice += price.BoxOfficeEarings;
+        }
+        return totalPrice;
     }
 
-    public Movie UpdateMovie(MovieGetDto obj)
+    public void UpdateMovie(MovieGetDto obj)
     {
-        throw new NotImplementedException();
+        movies.UpdateMovie(ConvertToEntity(obj));
     }
 }
