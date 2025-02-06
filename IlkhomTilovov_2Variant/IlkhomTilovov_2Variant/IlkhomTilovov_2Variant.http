@@ -1,0 +1,6 @@
+@IlkhomTilovov_2Variant_HostAddress = http://localhost:5047
+
+GET {{IlkhomTilovov_2Variant_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

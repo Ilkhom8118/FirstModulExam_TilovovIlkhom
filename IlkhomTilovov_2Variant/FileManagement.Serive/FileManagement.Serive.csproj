@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CarCRUD.StorageBroker\CarCRUD.StorageBroker.csproj" />
+    <ProjectReference Include="..\FileManagement.StorageBroker\FileManagement.StorageBroker.csproj" />
   </ItemGroup>
 
 </Project>
