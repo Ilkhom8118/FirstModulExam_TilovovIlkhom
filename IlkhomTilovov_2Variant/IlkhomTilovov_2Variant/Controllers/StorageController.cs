@@ -78,6 +78,13 @@ namespace IlkhomTilovov_2Variant.Controllers
             folder = folder ?? string.Empty;
             return await _storageService.GetAllInFolderPath(folder);
         }
+        [HttpGet("uploadFiles")]
+        public async Task UploadFiles(List<IFormFile> files, string? folderPath)
+        {
+            folderPath = folderPath ?? string.Empty;
+            folderPath = Path.Combine(folderPath, files.Count.ToString());
+
+        }
         [HttpGet("getContentOfTxtFile")]
         public async Task GetContentOfTxtFile(string filePath, string newContent)
         {

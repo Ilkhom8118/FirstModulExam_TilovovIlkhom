@@ -111,9 +111,14 @@ public class LocalStorageBroker : IStorageBroker
         }
     }
 
-    public Task UploadFiles(List<Stream> files, string folderPath)
+    public async Task UploadFiles(List<Stream> files, string folderPath)
     {
-        throw new NotImplementedException();
+        folderPath = Path.Combine(_dataPath, folderPath);
+        if (!Directory.Exists(folderPath))
+        {
+            throw new Exception("Not Found");
+        }
+        Directory.GetFiles(folderPath).ToList();
     }
 
     public async Task UploadFileWithChunks(Stream file, string folderPath)
@@ -121,7 +126,7 @@ public class LocalStorageBroker : IStorageBroker
         var fileExtension = Path.GetExtension(folderPath);
         var destinationFilePath = Path.Combine(_dataPath, folderPath + fileExtension);
 
-        var bytes = 1024 * 1024 * 10;
+        var bytes = 1024 * 1024 * 50;
         byte[] buffer = new byte[bytes];
         int bytesRead;
 
